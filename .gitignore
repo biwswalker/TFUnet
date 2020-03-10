@@ -1,0 +1,8 @@
+*.h5
+dataset
+tmp
+client_secrets.json
+*.pyc
+result
+.vscode/
+__pycache__
