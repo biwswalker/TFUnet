@@ -73,7 +73,7 @@ with zipfile.ZipFile(os.path.join(local_download_path, gfilename), 'r') as zip_r
 image_size = 256
 train_path = "dataset/"
 epochs = 1000
-batch_size = 8
+batch_size = 16
 
 ## Training Ids
 train_ids = next(os.walk(train_path))[1]

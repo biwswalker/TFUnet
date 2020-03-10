@@ -15,7 +15,7 @@ train_ids = train_ids[val_data_size:]
 
 image_size = 256
 train_path = "dataset/"
-batch_size = 8
+batch_size = 16
 
 valid_gen = DataGen(valid_ids, train_path, image_size=image_size, batch_size=batch_size)
     
