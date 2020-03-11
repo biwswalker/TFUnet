@@ -10,7 +10,7 @@ from tensorflow import keras
 #### Step 3
 ## Preparing Dataset function
 class DataGen(keras.utils.Sequence):
-    def __init__(self, ids, path, batch_size=8, image_size=256):
+    def __init__(self, ids, path, batch_size=16, image_size=256):
         self.ids = ids
         self.path = path
         self.batch_size = batch_size
