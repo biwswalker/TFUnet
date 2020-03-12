@@ -46,9 +46,9 @@ except: pass
 gfilename = 'dataset_400.zip'
 
 print ("=> Start")
-if os.path.isfile(os.path.join(local_download_path, gfilename)):
-    print ("=> File exist: continue")
-else:
+# if os.path.isfile(os.path.join(local_download_path, gfilename)):
+#     print ("=> File exist: continue")
+# else:
     print ("=> File not exist: start download file")
     file_list = drive.ListFile({'q': "title='" + gfilename + "'"}).GetList()
     for gFiles in file_list:
