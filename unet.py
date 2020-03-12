@@ -29,44 +29,44 @@ tf.seed = seed
 ## Download Dataset form Google Drive
 ## local_download_path = os.path.expanduser('~/Workspace/')
 ## 1. Authenticate and create the PyDrive client.
-# gauth = GoogleAuth()
+gauth = GoogleAuth()
 ## gauth.LocalWebserverAuth()
-# gauth.CommandLineAuth()
+gauth.CommandLineAuth()
 
-# drive = GoogleDrive(gauth)
+drive = GoogleDrive(gauth)
 
 ## choose a local (colab) directory to store the data.
-# local_download_path = os.path.abspath('tmp')
-# try:
-#   os.makedirs(local_download_path)
-# except: pass
+local_download_path = os.path.abspath('tmp')
+try:
+  os.makedirs(local_download_path)
+except: pass
 
 ## 2. Auto-iterate using the query syntax
 ##    https://developers.google.com/drive/v2/web/search-parameters
-# gfilename = 'dataset_400.zip'
+gfilename = 'dataset_400.zip'
 
-# if os.path.isfile(os.path.join(local_download_path, gfilename)):
-#     print ("=> File exist: continue")
-# else:
-#     print ("=> File not exist: start download file")
-#     file_list = drive.ListFile({'q': "title='" + gfilename + "'"}).GetList()
-#     for gFiles in file_list:
-#       # 3. Create & download by id.
-#       if gFiles['title'] == gfilename:
-#         print('title: %s, id: %s' % (gFiles['title'], gFiles['id']))
-#         fname = os.path.join(local_download_path, gFiles['title'])
-#         print('=> Downloading to {}'.format(fname))
-#         f_ = drive.CreateFile({'id': gFiles['id']})
-#         f_.GetContentFile(fname)
-#         print ("=> Download successes")
+if os.path.isfile(os.path.join(local_download_path, gfilename)):
+    print ("=> File exist: continue")
+else:
+    print ("=> File not exist: start download file")
+    file_list = drive.ListFile({'q': "title='" + gfilename + "'"}).GetList()
+    for gFiles in file_list:
+      # 3. Create & download by id.
+      if gFiles['title'] == gfilename:
+        print('title: %s, id: %s' % (gFiles['title'], gFiles['id']))
+        fname = os.path.join(local_download_path, gFiles['title'])
+        print('=> Downloading to {}'.format(fname))
+        f_ = drive.CreateFile({'id': gFiles['id']})
+        f_.GetContentFile(fname)
+        print ("=> Download successes")
   
 
 #### Step 2
 ## Extract Zip
-# print ("=> Start extract zip file")
-# local_extract_path = os.path.abspath('')
-# with zipfile.ZipFile(os.path.join(local_download_path, gfilename), 'r') as zip_ref:
-#     zip_ref.extractall(local_extract_path)
+print ("=> Start extract zip file")
+local_extract_path = os.path.abspath('')
+with zipfile.ZipFile(os.path.join(local_download_path, gfilename), 'r') as zip_ref:
+    zip_ref.extractall(local_extract_path)
 
 #### Step 4
 ## Hyperparameters
