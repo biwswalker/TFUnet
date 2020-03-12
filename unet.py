@@ -29,45 +29,45 @@ tf.seed = seed
 ## Download Dataset form Google Drive
 ## local_download_path = os.path.expanduser('~/Workspace/')
 ## 1. Authenticate and create the PyDrive client.
-gauth = GoogleAuth()
+# gauth = GoogleAuth()
 ## gauth.LocalWebserverAuth()
-gauth.CommandLineAuth()
+# gauth.CommandLineAuth()
 
-drive = GoogleDrive(gauth)
+# drive = GoogleDrive(gauth)
 
 ## choose a local (colab) directory to store the data.
-local_download_path = os.path.abspath('tmp')
-try:
-  os.makedirs(local_download_path)
-except: pass
+# local_download_path = os.path.abspath('tmp')
+# try:
+#   os.makedirs(local_download_path)
+# except: pass
 
 ## 2. Auto-iterate using the query syntax
 ##    https://developers.google.com/drive/v2/web/search-parameters
-gfilename = 'dataset_400.zip'
+# gfilename = 'dataset_400.zip'
 
 print ("=> Start")
 # if os.path.isfile(os.path.join(local_download_path, gfilename)):
 #     print ("=> File exist: continue")
 # else:
-print ("=> File not exist: start download file")
-file_list = drive.ListFile({'q': "title='" + gfilename + "'"}).GetList()
-for gFiles in file_list:
-  # 3. Create & download by id.
-  if gFiles['title'] == gfilename:
-    print('title: %s, id: %s' % (gFiles['title'], gFiles['id']))
-    fname = os.path.join(local_download_path, gFiles['title'])
-    print('=> Downloading to {}'.format(fname))
-    f_ = drive.CreateFile({'id': gFiles['id']})
-    f_.GetContentFile(fname)
-    print ("=> Download successes")
+# print ("=> File not exist: start download file")
+#     file_list = drive.ListFile({'q': "title='" + gfilename + "'"}).GetList()
+#     for gFiles in file_list:
+#       # 3. Create & download by id.
+#       if gFiles['title'] == gfilename:
+#         print('title: %s, id: %s' % (gFiles['title'], gFiles['id']))
+#         fname = os.path.join(local_download_path, gFiles['title'])
+#         print('=> Downloading to {}'.format(fname))
+#         f_ = drive.CreateFile({'id': gFiles['id']})
+#         f_.GetContentFile(fname)
+#         print ("=> Download successes")
   
 
 #### Step 2
 ## Extract Zip
-print ("=> Start extract zip file")
-local_extract_path = os.path.abspath('')
-with zipfile.ZipFile(os.path.join(local_download_path, gfilename), 'r') as zip_ref:
-    zip_ref.extractall(local_extract_path)
+# print ("=> Start extract zip file")
+# local_extract_path = os.path.abspath('')
+# with zipfile.ZipFile(os.path.join(local_download_path, gfilename), 'r') as zip_ref:
+#     zip_ref.extractall(local_extract_path)
 
 #### Step 4
 ## Hyperparameters
@@ -78,6 +78,7 @@ batch_size = 16
 
 ## Training Ids
 train_ids = next(os.walk(train_path))[1]
+print(train_ids)
 
 ## Validation Data Size
 val_data_size = 499
@@ -89,7 +90,7 @@ train_ids = train_ids[val_data_size:]
 ## Excute Dataset preparing function
 gen = DataGen(train_ids, train_path, batch_size=batch_size, image_size=image_size)
 x, y = gen.__getitem__(0)
-print(x.shape, y.shape)
+# print(x.shape, y.shape)
 
 #### Step 6
 ## Optional run
