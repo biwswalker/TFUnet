@@ -45,6 +45,7 @@ except: pass
 ##    https://developers.google.com/drive/v2/web/search-parameters
 gfilename = 'dataset_400.zip'
 
+print ("=> Start")
 if os.path.isfile(os.path.join(local_download_path, gfilename)):
     print ("=> File exist: continue")
 else:
