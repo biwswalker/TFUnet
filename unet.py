@@ -49,17 +49,17 @@ print ("=> Start")
 # if os.path.isfile(os.path.join(local_download_path, gfilename)):
 #     print ("=> File exist: continue")
 # else:
-    print ("=> File not exist: start download file")
-    file_list = drive.ListFile({'q': "title='" + gfilename + "'"}).GetList()
-    for gFiles in file_list:
-      # 3. Create & download by id.
-      if gFiles['title'] == gfilename:
-        print('title: %s, id: %s' % (gFiles['title'], gFiles['id']))
-        fname = os.path.join(local_download_path, gFiles['title'])
-        print('=> Downloading to {}'.format(fname))
-        f_ = drive.CreateFile({'id': gFiles['id']})
-        f_.GetContentFile(fname)
-        print ("=> Download successes")
+print ("=> File not exist: start download file")
+file_list = drive.ListFile({'q': "title='" + gfilename + "'"}).GetList()
+for gFiles in file_list:
+  # 3. Create & download by id.
+  if gFiles['title'] == gfilename:
+    print('title: %s, id: %s' % (gFiles['title'], gFiles['id']))
+    fname = os.path.join(local_download_path, gFiles['title'])
+    print('=> Downloading to {}'.format(fname))
+    f_ = drive.CreateFile({'id': gFiles['id']})
+    f_.GetContentFile(fname)
+    print ("=> Download successes")
   
 
 #### Step 2
