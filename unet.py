@@ -73,13 +73,13 @@ with zipfile.ZipFile(os.path.join(local_download_path, gfilename), 'r') as zip_r
 image_size = 256
 train_path = "dataset/"
 epochs = 1000
-batch_size = 16
+batch_size = 8
 
 ## Training Ids
 train_ids = next(os.walk(train_path))[1]
 
 ## Validation Data Size
-val_data_size = 10
+val_data_size = 500
 
 valid_ids = train_ids[:val_data_size]
 train_ids = train_ids[val_data_size:]
