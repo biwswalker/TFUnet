@@ -29,11 +29,11 @@ tf.seed = seed
 ## Download Dataset form Google Drive
 ## local_download_path = os.path.expanduser('~/Workspace/')
 ## 1. Authenticate and create the PyDrive client.
-# gauth = GoogleAuth()
+gauth = GoogleAuth()
 ## gauth.LocalWebserverAuth()
-# gauth.CommandLineAuth()
+gauth.CommandLineAuth()
 
-# drive = GoogleDrive(gauth)
+drive = GoogleDrive(gauth)
 
 ## choose a local (colab) directory to store the data.
 # local_download_path = os.path.abspath('tmp')
